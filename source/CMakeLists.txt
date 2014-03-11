@@ -1,5 +1,5 @@
 
-## Main trunk of gubbins includes
+## Main trunk of QuantumDove includes
 include_directories (
   ${CMAKE_SOURCE_DIR}/include
   ${CMAKE_BINARY_DIR}
