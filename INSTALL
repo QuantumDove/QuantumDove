@@ -1,29 +1,4 @@
 INSTALL
 
-Use cmake >=2.8 to configure and install gubbins on your machine. 
-
-It is general practice to use an "out of source" build.
-
-Here's one way to get gubbins working (on UNIX or GNU/Linux) starting
-from your gubbins directory:
-
-$mkdir build
-$cd build
-$cmake ..
-$make
-
-The gubbins library is placed in /path_to_gubbins/lib.
-
-To test gubbins, or to see what he can do, see the examples
-directory. Compiling an example is the same as compiling the library
-(except that we do not care about out of source builds).
-
-Here's one way to compile step-0:
-
-$cd examples/step-0
-$cmake .
-$make
-
-The example "step-0" is built and linked against gubbins.
-
+Read the README for installation instructions.
 
