@@ -3,29 +3,29 @@
 
 // Before doing anything else, grab in the definitions of the test
 // space and trial spaces that make up the finite element system.
-#include <gubbins/base/test_space.h>
-#include <gubbins/base/trial_space.h>
-#include <gubbins/materials/constants.h>
+#include <qdove/base/test_space.h>
+#include <qdove/base/trial_space.h>
+#include <qdove/materials/constants.h>
 
 // Use the *solution* to a fick equation as a material function
-#include <gubbins/models/fick.h>
+#include <qdove/models/fick.h>
 
 // Start by solving Schroedinger's problem
-#include <gubbins/models/schroedinger.h>
+#include <qdove/models/schroedinger.h>
 
 // and next by solving Poissons's problem
-#include <gubbins/models/poisson.h>
+#include <qdove/models/poisson.h>
 
-// Let's use a function from the gubbins library for a psudo potential.
-#include <gubbins/psuedopotentials/function_library.h>
+// Let's use a function from the qdove library for a psudo potential.
+#include <qdove/psuedopotentials/function_library.h>
 
 // Also make use of the predefined generalised eigenspectrum system -
 // we need this for the Schroedinger problem.
-#include <gubbins/generic_linear_algebra/eigenspectrum_system.h>
+#include <qdove/generic_linear_algebra/eigenspectrum_system.h>
 
 // Also make use of the predefined linear algebra system - we need
 // this for the Poisson problem.
-#include <gubbins/generic_linear_algebra/linear_algebra_system.h>
+#include <qdove/generic_linear_algebra/linear_algebra_system.h>
 
 // Next up are some deal.II objects that have not been generalised
 // away yet...
@@ -35,7 +35,7 @@
 
 // The purpose of this example is to have a working (dimensionless)
 // Schroedinger-Poisson solver that can be generalised piecewise to
-// the gubbins library.
+// the qdove library.
 //
 template<int dim>
 class SelfConsistentProblem
@@ -51,19 +51,19 @@ public:
 
 private:
   // The description of the finite element basis
-  gubbins::TrialSpace<dim> trial_space;
+  qdove::TrialSpace<dim> trial_space;
 
   // Geometry description and boundary constraints
-  gubbins::TestSpace<dim> test_space;
+  qdove::TestSpace<dim> test_space;
 
   // Fick's problem, which is used to obtain a material profile.
-  gubbins::Fick::Solution<1> fick_solution;
+  qdove::Fick::Solution<1> fick_solution;
 
   // The eigenspectrum system that will be solved by SLEPc
-  gubbins::Schroedinger::Problem<dim> schroedinger_problem;
+  qdove::Schroedinger::Problem<dim> schroedinger_problem;
 
   // The system of equations that will be solved by PETSc
-  gubbins::Poisson::Problem<dim> poisson_problem;
+  qdove::Poisson::Problem<dim> poisson_problem;
 
   // The eigenpairs from schroedinger's problem
   std::vector<dealii::PETScWrappers::Vector> eigenvectors;
@@ -121,7 +121,7 @@ SelfConsistentProblem<dim>::run ()
       << test_space.n_dofs ()
       << std::endl;
 
-  const double energy_height = 0.5 * gubbins::E0;
+  const double energy_height = 0.5 * qdove::E0;
   const double doping = 1e25;
 
   //
@@ -156,7 +156,7 @@ SelfConsistentProblem<dim>::run ()
   // set up the effective mass
   dealii::PETScWrappers::Vector kinetic_energy_prefactor (test_space.n_dofs ());
   for (std::size_t i=0; i<kinetic_energy_prefactor.size(); ++i)
-    kinetic_energy_prefactor[i] = (gubbins::HBAR*gubbins::HBAR) / (2.*(gubbins::mstar_GaAs + 0.35*material_function[i]*0.083)*gubbins::M0);
+    kinetic_energy_prefactor[i] = (qdove::HBAR*qdove::HBAR) / (2.*(qdove::mstar_GaAs + 0.35*material_function[i]*0.083)*qdove::M0);
   write_gnuplot (kinetic_energy_prefactor, "kinetic_energy_prefactor", 0);
 
   // set up the initial guess for the electron potential (i.e. electrostatic potential multiplied by elementary charge)
@@ -164,7 +164,7 @@ SelfConsistentProblem<dim>::run ()
   potential = material_function;
   potential *= 0.9 * energy_height; //start with no space charge region by selecting the potential right below the the Fer
 
-  double E_bonding = 0.005 * gubbins::E0; //5meV bonding energy of the ions
+  double E_bonding = 0.005 * qdove::E0; //5meV bonding energy of the ions
   double E_fermi = energy_height - E_bonding;
 
   //
@@ -191,11 +191,11 @@ SelfConsistentProblem<dim>::run ()
 
     std::cout << "   Scaled values (meV):           ";
     for (unsigned int i=0; i<eigenvalues.size (); ++i)
-      std::cout << eigenvalues[i]/(1e-03*gubbins::E0) << " ";
+      std::cout << eigenvalues[i]/(1e-03*qdove::E0) << " ";
     std::cout << std::endl;
 
     // Compute density from the eigenfunctions and eigenvalues:
-    double kBT = 300.0 * gubbins::KB;
+    double kBT = 300.0 * qdove::KB;
     dealii::PETScWrappers::Vector density(test_space.n_dofs());
     for (unsigned int i=0; i<eigenvectors.size (); ++i)
     {
@@ -203,7 +203,7 @@ SelfConsistentProblem<dim>::run ()
       double occupancy      =  kBT * std::log(1.0+std::exp((E_fermi - E_wavefunction)/kBT)); //integrated Fermi-Dirac statistic
       for (unsigned int j=0; j<eigenvectors[0].size (); ++j)
       {
-        double density_of_states = (gubbins::mstar_GaAs + 0.35*material_function[i]*0.083) * gubbins::M0 / (gubbins::HBAR*gubbins::HBAR*gubbins::PI);
+        double density_of_states = (qdove::mstar_GaAs + 0.35*material_function[i]*0.083) * qdove::M0 / (qdove::HBAR*qdove::HBAR*qdove::PI);
         density[j] += density_of_states * eigenvectors[i][j] * eigenvectors[i][j] * occupancy;
       }
     }
@@ -215,7 +215,7 @@ SelfConsistentProblem<dim>::run ()
       if (potential[i] > E_fermi)
         rho[i] = -doping;
     rho += density;
-    rho *= gubbins::E0 * gubbins::E0 / (gubbins::permittivity_GaAs);
+    rho *= qdove::E0 * qdove::E0 / (qdove::permittivity_GaAs);
     write_gnuplot (rho, "rho", cycle);
 
     // Solve Poisson:
@@ -234,7 +234,7 @@ SelfConsistentProblem<dim>::run ()
       max_update = std::max(max_update, std::fabs(solution[i] - old_value));
     }
 
-    double cutoff_update_value = 0.02 * gubbins::E0;
+    double cutoff_update_value = 0.02 * qdove::E0;
     double alpha = (max_update > cutoff_update_value) ? cutoff_update_value / max_update : 1.0; //update by at most 10 mV for stability reasons
 
     alpha = 0.2;

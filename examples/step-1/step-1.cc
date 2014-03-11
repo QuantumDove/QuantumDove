@@ -3,29 +3,29 @@
 
 // Before doing anything else, grab in the definitions of the test
 // space and trial spaces that make up the finite element system.
-#include <gubbins/base/test_space.h>
-#include <gubbins/base/trial_space.h>
-#include <gubbins/materials/constants.h>
+#include <qdove/base/test_space.h>
+#include <qdove/base/trial_space.h>
+#include <qdove/materials/constants.h>
 
 // Use the *solution* to a fick equation as a material function
-#include <gubbins/models/fick.h>
+#include <qdove/models/fick.h>
 
 // Start by solving Schroedinger's problem
-#include <gubbins/models/schroedinger.h>
+#include <qdove/models/schroedinger.h>
 
 // and next by solving Poissons's problem
-#include <gubbins/models/poisson.h>
+#include <qdove/models/poisson.h>
 
 // Fermi-Dirac statistic play a role later here
-#include <gubbins/models/statistics.h>
+#include <qdove/models/statistics.h>
 
 // Also make use of the predefined generalised eigenspectrum system -
 // we need this for the Schroedinger problem.
-#include <gubbins/generic_linear_algebra/eigenspectrum_system.h>
+#include <qdove/generic_linear_algebra/eigenspectrum_system.h>
 
 // Also make use of the predefined linear algebra system - we need
 // this for the Poisson problem.
-#include <gubbins/generic_linear_algebra/linear_algebra_system.h>
+#include <qdove/generic_linear_algebra/linear_algebra_system.h>
 
 // Next up are some deal.II objects that have not been generalised
 // away yet...
@@ -35,7 +35,7 @@
 
 // The purpose of this example is to have a working (dimensionless)
 // Schroedinger-Poisson solver that can be generalised piecewise to
-// the gubbins library.
+// the qdove library.
 //
 template<int dim>
 class SelfConsistentProblem
@@ -51,19 +51,19 @@ public:
 
 private:
   // The description of the finite element basis
-  gubbins::TrialSpace<dim> trial_space;
+  qdove::TrialSpace<dim> trial_space;
 
   // Geometry description and boundary constraints
-  gubbins::TestSpace<dim> test_space;
+  qdove::TestSpace<dim> test_space;
 
   // Fick's problem, which is used to obtain a material profile.
-  gubbins::Fick::Solution<1> fick_solution;
+  qdove::Fick::Solution<1> fick_solution;
 
   // The eigenspectrum system that will be solved by SLEPc
-  gubbins::Schroedinger::Problem<dim> schroedinger_problem;
+  qdove::Schroedinger::Problem<dim> schroedinger_problem;
 
   // The system of equations that will be solved by PETSc
-  gubbins::Poisson::Problem<dim> poisson_problem;
+  qdove::Poisson::Problem<dim> poisson_problem;
 
   // The eigenpairs from schroedinger's problem
   std::vector<dealii::PETScWrappers::Vector> eigenvectors;
@@ -122,7 +122,7 @@ SelfConsistentProblem<dim>::run ()
       << std::endl;
 
   const double radius       = 50e-10;
-  const double band_edge    = 0.5 * gubbins::E0;
+  const double band_edge    = 0.5 * qdove::E0;
   const double fermi_energy = band_edge * 0.95; //for simplicity we take the bond energy to be 5% below the band edge
   const double doping       = 1e25;
 
@@ -144,13 +144,13 @@ SelfConsistentProblem<dim>::run ()
   // set up the effective mass, to keep things simple assume a constant effective mass
   dealii::PETScWrappers::Vector eff_mass (test_space.n_dofs ());
   for (std::size_t i=0; i<eff_mass.size(); ++i)
-    eff_mass[i] = gubbins::mstar_GaAs;
+    eff_mass[i] = qdove::mstar_GaAs;
   write_gnuplot (eff_mass, "effective_mass", 0);
 
   // Setup the kinetic energy term
   dealii::PETScWrappers::Vector kinetic (test_space.n_dofs ());
   for (std::size_t i=0; i<eff_mass.size(); ++i)
-    kinetic[i] = (gubbins::HBAR*gubbins::HBAR) / (2.*eff_mass[i]*gubbins::M0);
+    kinetic[i] = (qdove::HBAR*qdove::HBAR) / (2.*eff_mass[i]*qdove::M0);
   write_gnuplot (kinetic, "kinetic", 0);
 
   // set up the initial guess for the electron potential (i.e. electrostatic potential multiplied by elementary charge)
@@ -181,16 +181,16 @@ SelfConsistentProblem<dim>::run ()
 
     std::cout << "   Scaled values (meV):           ";
     for (unsigned int i=0; i<eigenvalues.size (); ++i)
-      std::cout << eigenvalues[i]/(1e-03*gubbins::E0) << " ";
+      std::cout << eigenvalues[i]/(1e-03*qdove::E0) << " ";
     std::cout << std::endl;
 
     // Make the density of states (dos)
     dealii::PETScWrappers::Vector dos (test_space.n_dofs ());
-    gubbins::FermiDirac::compute_density_of_states (eff_mass, dos);
+    qdove::FermiDirac::compute_density_of_states (eff_mass, dos);
 
     // and then the density
     dealii::PETScWrappers::Vector density (test_space.n_dofs());
-    gubbins::FermiDirac::compute_number_density (eigenvectors, eigenvalues, fermi_energy, dos, density);
+    qdove::FermiDirac::compute_number_density (eigenvectors, eigenvalues, fermi_energy, dos, density);
     write_gnuplot (density, "density", cycle);
 
     // Set up RHS for Poisson's equation.
@@ -201,7 +201,7 @@ SelfConsistentProblem<dim>::run ()
     for (std::size_t i=0; i<solution.size (); ++i)
       if (potential[i] > fermi_energy)
         rho[i] = -doping;
-    rho *= 4.0 * gubbins::PI * gubbins::E0 * gubbins::E0 / (gubbins::permittivity_GaAs);
+    rho *= 4.0 * qdove::PI * qdove::E0 * qdove::E0 / (qdove::permittivity_GaAs);
     write_gnuplot (rho, "rho", cycle);
 
     // Solve Poisson:
@@ -220,7 +220,7 @@ SelfConsistentProblem<dim>::run ()
       max_update = std::max(max_update, std::fabs(solution[i] - old_value));
     }
 
-    double cutoff_update_value = 0.02 * gubbins::E0;
+    double cutoff_update_value = 0.02 * qdove::E0;
     double alpha = (max_update > cutoff_update_value) 
       ? cutoff_update_value / max_update 
       : 1.0; // update by at most 10 mV for stability reasons

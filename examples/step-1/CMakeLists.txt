@@ -12,17 +12,17 @@ find_package (deal.II 8.0 REQUIRED
 DEAL_II_INITIALIZE_CACHED_VARIABLES()
 project (${TARGET})
 
-# Find gubbins libraries		
-find_library (GUBBINS_LIBRARIES
-  NAMES gubbins 
+# Find qdove libraries		
+find_library (QDOVE_LIBRARIES
+  NAMES qdove 
   PATHS "${PROJECT_SOURCE_DIR}/../../lib"
   )
-find_package_handle_standard_args ("gubbins libraries" REQUIRED_VARS GUBBINS_LIBRARIES)
+find_package_handle_standard_args ("qdove libraries" REQUIRED_VARS QDOVE_LIBRARIES)
 
 include_directories (${PROJECT_SOURCE_DIR}/../../include ${DEAL_II_INCLUDE_DIRS})
 
 add_executable (${TARGET} ${TARGET_SRC})
-target_link_libraries (${TARGET} ${DEAL_II_LIBRARIES} ${GUBBINS_LIBRARIES})
+target_link_libraries (${TARGET} ${DEAL_II_LIBRARIES} ${QDOVE_LIBRARIES})
 
 
 
