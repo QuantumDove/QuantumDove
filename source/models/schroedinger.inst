@@ -1,0 +1,2 @@
+template class gubbins::Schroedinger::Problem<1>;
+//template class Schroedinger::Solution<1>;

@@ -1,0 +1,15 @@
+FAQ
+
+(Q) What is needed to compile gubbins?
+
+(A) The libraries deal.II, PETSc, and SLEPc. That is, you need to
+    successfully have installed deal.II with PETSc and SLEPc on your
+    machine before gubbins will configure.
+
+(Q) How do I compile gubbins?
+
+(A) The safe way to compile gubbins is "out of source". (i) Make a
+    build directory parallel to the gubbins root directory $ mkdir
+    gubbins-build; (ii) run cmake $ cmake ../gubbins; and finally
+    build the library with $ make. The shared library is built in
+    gubbins/lib.

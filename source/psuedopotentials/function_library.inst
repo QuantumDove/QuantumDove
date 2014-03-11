@@ -1,0 +1,9 @@
+
+
+template class gubbins::IsotropicOscillator<1>;
+template class gubbins::IsotropicOscillator<2>;
+template class gubbins::IsotropicOscillator<3>;
+
+template class gubbins::AnisotropicOscillator<1>;
+template class gubbins::AnisotropicOscillator<2>;
+template class gubbins::AnisotropicOscillator<3>;

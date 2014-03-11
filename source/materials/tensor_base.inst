@@ -1,0 +1,2 @@
+template class gubbins::TensorBase<6>;
+template class gubbins::TensorBase<2>;

@@ -1,0 +1,29 @@
+cmake_minimum_required (VERSION 2.8.8)
+include (FindPackageHandleStandardArgs)
+
+set (TARGET "step-1")
+set (TARGET_SRC
+  step-1.cc
+)
+
+find_package (deal.II 8.0 REQUIRED
+  HINTS ${DEAL_II_DIR} ../ ../../ $ENV{DEAL_II_DIR}
+  )
+DEAL_II_INITIALIZE_CACHED_VARIABLES()
+project (${TARGET})
+
+# Find gubbins libraries		
+find_library (GUBBINS_LIBRARIES
+  NAMES gubbins 
+  PATHS "${PROJECT_SOURCE_DIR}/../../lib"
+  )
+find_package_handle_standard_args ("gubbins libraries" REQUIRED_VARS GUBBINS_LIBRARIES)
+
+include_directories (${PROJECT_SOURCE_DIR}/../../include ${DEAL_II_INCLUDE_DIRS})
+
+add_executable (${TARGET} ${TARGET_SRC})
+target_link_libraries (${TARGET} ${DEAL_II_LIBRARIES} ${GUBBINS_LIBRARIES})
+
+
+
+

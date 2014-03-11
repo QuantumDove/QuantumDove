@@ -1,0 +1,2 @@
+template class gubbins::Poisson::Problem<1>;
+//template class Poisson::Solution<1>;
