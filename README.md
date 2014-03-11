@@ -1,14 +1,14 @@
-# gubbins
+# QuantumDove
 
 
-gubbins is a free open-source quantum-mechanics simulator based on the
-solution of the Schroedinger-Poisson equations.
+QuantumDove is a free open-source quantum-mechanics simulator based on
+the solution of the Schroedinger-Poisson equations.
 
 At present, one-dimensional quantum heterostructures can be simulated
 in a self-consistent as well as a non-selfconsistent manner. Future
 support for two- and three-dimensional heterostructure is planned.
 
-### What is needed to compile gubbins?
+### What is needed to compile QuantumDove?
 
 The libraries 
 
@@ -17,29 +17,30 @@ The libraries
    * SLEPc ( http://www.grycap.upv.es/slepc/ )
 
 are required. That is, you need to successfully have installed deal.II
-with PETSc and SLEPc on your machine before gubbins will configure.
+with PETSc and SLEPc as dependencies on your machine before
+QuantumDove will configure.
 
-### How do I compile gubbins?
+### How do I compile QuantumDove?
 
-The safe way to compile gubbins is "out of source". 
+The safe way to compile QuantumDove is "out of source". 
 
-   * Make a build directory parallel to the gubbins root directory 
+   * Make a build directory within the QuantumDove root directory 
     
-        $ mkdir gubbins-build;
+        $ mkdir build;
 
    *  run cmake
 
-        $ cmake ../gubbins;
+        $ cmake ../;
 
    * finally build the library with
 
         $ make
 
-      The shared library is built in gubbins/lib.
+The shared library is built in QuantumDove/lib as libqdove.so.a.b.c.
 
-### How do I use gubbins?
+### How do I use QuantumDove?
 
-To test gubbins, or to see what he can do, see the examples
+To test QuantumDove, or to see what he can do, see the examples
 directory. Compiling an example is the same as compiling the library
 (except that we do not care about out of source builds).
 
@@ -49,5 +50,6 @@ Here's one way to compile step-0:
     $ cmake .
     $ make
 
-With this the example "step-0" is built and linked against gubbins.
+With this the example "step-0" is built and linked against
+QuantumDove.
 
