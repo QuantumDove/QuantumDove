@@ -25,7 +25,7 @@
 #include <cassert>
 #include <qdove/generic_linear_algebra/eigenspectrum_system.h>
 
-namespace gubbins
+namespace qdove
 {
   /* Constructor */
   EigenspectrumSystem::EigenspectrumSystem () 
@@ -35,7 +35,7 @@ namespace gubbins
   {}
 
   void
-  EigenspectrumSystem::set_system_type (gubbins::SystemType &eigenspectrum_system_type)
+  EigenspectrumSystem::set_system_type (qdove::SystemType &eigenspectrum_system_type)
   {
     // Switch an enumerator to get problem type (generalised hermitian
     // or standard nonhermitian, or...)

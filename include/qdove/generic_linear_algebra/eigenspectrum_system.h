@@ -22,8 +22,8 @@
    DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef __gubbins_eigenspectrum_system_h
-#define __gubbins_eigenspectrum_system_h
+#ifndef __qdove_eigenspectrum_system_h
+#define __qdove_eigenspectrum_system_h
 
 /* Types of eigenspectrum system */
 #include <qdove/generic_linear_algebra/system_type.h>
@@ -32,7 +32,7 @@
 #include <deal.II/lac/petsc_sparse_matrix.h>
 #include <deal.II/lac/petsc_vector.h>
 
-namespace gubbins
+namespace qdove
 {
   /**
    * A class denoting the objects that make up a generalised
@@ -89,7 +89,7 @@ namespace gubbins
     /**
 	Set the system type 
     */
-    void set_system_type (gubbins::SystemType &eigenspectrum_system_type);
+    void set_system_type (qdove::SystemType &eigenspectrum_system_type);
 
     /**
        Reinitialise matrices, vectors, and values of the eigenspectrum
@@ -113,5 +113,5 @@ namespace gubbins
   
 }
 
-#endif // __gubbins_eigenspectrum_system_h
+#endif // __qdove_eigenspectrum_system_h
 

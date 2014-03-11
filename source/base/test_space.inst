@@ -1,1 +1,1 @@
-template class gubbins::TestSpace<1>;
+template class qdove::TestSpace<1>;

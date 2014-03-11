@@ -26,7 +26,7 @@
 #include <qdove/materials/constants.h>
 
 
-namespace gubbins
+namespace qdove
 {
 
   namespace FermiDirac
@@ -55,7 +55,7 @@ namespace gubbins
 
       // Compute the occupancy level from integrated Fermi-Dirac
       // statistics. Make use of fixed temperature 300K for now.
-      const double kbt = gubbins::KB * 300;
+      const double kbt = qdove::KB * 300;
       const double occupancy = kbt * std::log (1.+std::exp ( (fermi_energy_value-energy_value) / kbt) );
 
       // Do a straight point-wise multiplication
@@ -97,7 +97,7 @@ namespace gubbins
 
       // Do a straight point-wise multiplication
       for (unsigned int i=0; i<density_of_states.size (); ++i)
-	density_of_states[i] = (effective_mass_function[i]*gubbins::M0) / (gubbins::HBAR*gubbins::HBAR*gubbins::PI);
+	density_of_states[i] = (effective_mass_function[i]*qdove::M0) / (qdove::HBAR*qdove::HBAR*qdove::PI);
     }
 
     
@@ -108,6 +108,6 @@ namespace gubbins
     
   } // namespace FermiDirac
 
-} // namespace gubbins
+} // namespace qdove
 
 // #include "fermi_dirac.inst"

@@ -22,10 +22,10 @@
    DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef __gubbins_system_type_h
-#define __gubbins_system_type_h
+#ifndef __qdove_system_type_h
+#define __qdove_system_type_h
 
-namespace gubbins
+namespace qdove
 {
   /**
      A list of eigenspectrum system types that can be handled
@@ -39,4 +39,4 @@ namespace gubbins
   };
 }
 
-#endif // __gubbins_system_type_h
+#endif // __qdove_system_type_h

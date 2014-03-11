@@ -24,7 +24,7 @@
 
 #include <qdove/base/test_space.h>
 
-namespace gubbins
+namespace qdove
 {
   template<int dim>
   TestSpace<dim>::TestSpace ()
@@ -33,7 +33,7 @@ namespace gubbins
   {}
 
   template<int dim>
-  TestSpace<dim>::TestSpace (gubbins::TrialSpace<dim> &trial_space)
+  TestSpace<dim>::TestSpace (qdove::TrialSpace<dim> &trial_space)
     :
     dof_handler (*(trial_space.triangulation ())),
     finite_element (dealii::FE_Q<dim, dim> (1), 1)

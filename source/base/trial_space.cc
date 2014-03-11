@@ -24,7 +24,7 @@
 
 #include <qdove/base/trial_space.h>
 
-namespace gubbins
+namespace qdove
 {
   template<int dim>
   TrialSpace<dim>::TrialSpace ()
@@ -34,7 +34,7 @@ namespace gubbins
   TrialSpace<dim>::TrialSpace (dealii::Triangulation<dim> &triangulation)
     :
     triangulation_description (&triangulation),
-    constraints_type (gubbins::Constraints::DirchletZero)
+    constraints_type (qdove::Constraints::DirchletZero)
   {}
 
   template<int dim>

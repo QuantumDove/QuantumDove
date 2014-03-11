@@ -22,8 +22,8 @@
    DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef __gubbins_generic_linear_algebra_solver_h
-#define __gubbins_generic_linear_algebra_solver_h
+#ifndef __qdove_generic_linear_algebra_solver_h
+#define __qdove_generic_linear_algebra_solver_h
 
 // Clearly this needed to know what a linear system is.
 #include <qdove/generic_linear_algebra/linear_algebra_system.h>
@@ -34,7 +34,7 @@
 #include <deal.II/lac/petsc_solver.h>
 #include <deal.II/lac/petsc_precondition.h>
 
-namespace gubbins
+namespace qdove
 {
   class LinearSolver
   {
@@ -58,4 +58,4 @@ namespace gubbins
   };
 }
 
-#endif // __gubbins_generic_linear_algebra_solver_h
+#endif // __qdove_generic_linear_algebra_solver_h

@@ -22,12 +22,12 @@
    DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef __gubbins_function_library_h
-#define __gubbins_function_library_h
+#ifndef __qdove_function_library_h
+#define __qdove_function_library_h
 
 #include <deal.II/base/function.h>
 
-namespace gubbins
+namespace qdove
 {
   /**
     Anisotropic harmonic oscillator.  \[f(x):=k^2x^2\]
@@ -64,4 +64,4 @@ namespace gubbins
   };
 }
 
-#endif // __gubbins_function_library_h
+#endif // __qdove_function_library_h

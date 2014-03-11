@@ -24,7 +24,7 @@
 
 #include <qdove/models/fick.h>
 
-namespace gubbins
+namespace qdove
 {
   namespace Fick
   {
@@ -40,8 +40,8 @@ namespace gubbins
     {}
 
     template<int dim>
-    Solution<dim>::Solution (gubbins::TrialSpace<dim> &trial,
-           gubbins::TestSpace<dim>  &test)
+    Solution<dim>::Solution (qdove::TrialSpace<dim> &trial,
+           qdove::TestSpace<dim>  &test)
       :
       dealii::Function<dim> (),
       trial_space (&trial),
@@ -148,8 +148,8 @@ namespace gubbins
     // Problem
 
     template<int dim>
-    Problem<dim>::Problem (gubbins::TrialSpace<dim> &trial,
-         gubbins::TestSpace<dim>  &test)
+    Problem<dim>::Problem (qdove::TrialSpace<dim> &trial,
+         qdove::TestSpace<dim>  &test)
       :
       trial_space (&trial),
       test_space (&test),
@@ -162,7 +162,7 @@ namespace gubbins
 
   } // namespace Fick
 
-} // namespace gubbins
+} // namespace qdove
 
 // Explicit instantiations
 #include "fick.inst"

@@ -22,13 +22,13 @@
    DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef __gubbins_trial_space_h
-#define __gubbins_trial_space_h
+#ifndef __qdove_trial_space_h
+#define __qdove_trial_space_h
 
 #include <deal.II/grid/tria.h>
 #include <deal.II/lac/constraint_matrix.h>
 
-namespace gubbins
+namespace qdove
 {
   enum Constraints
   {
@@ -77,7 +77,7 @@ namespace gubbins
       /**
 	 Boundary constraints 
       */
-      gubbins::Constraints constraints_type;
+      qdove::Constraints constraints_type;
 
       /**
 	 Matrix implementation of boundary constraints 
@@ -86,4 +86,4 @@ namespace gubbins
   };
 }
 
-#endif // __gubbins_trial_space_h
+#endif // __qdove_trial_space_h

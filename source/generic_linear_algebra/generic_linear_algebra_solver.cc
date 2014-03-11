@@ -24,7 +24,7 @@
 
 #include <qdove/generic_linear_algebra/generic_linear_algebra_solver.h>
 
-namespace gubbins
+namespace qdove
 {
   void solve (LinearAlgebraSystem::System &linear_algebra_system)
   {

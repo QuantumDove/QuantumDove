@@ -22,8 +22,8 @@
    DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef __gubbins_schroedinger_h
-#define __gubbins_schroedinger_h
+#ifndef __qdove_schroedinger_h
+#define __qdove_schroedinger_h
 
 #include <qdove/base/trial_space.h>
 #include <qdove/base/test_space.h>
@@ -35,7 +35,7 @@
 #include <deal.II/lac/solver_control.h>
 #include <deal.II/lac/slepc_solver.h>
 
-namespace gubbins
+namespace qdove
 {
 
   namespace Schroedinger
@@ -60,8 +60,8 @@ namespace gubbins
 	 Constructor. Generate the problem using these trial and
 	 test spaces.
       */
-      Problem (gubbins::TrialSpace<dim> &trial,
-               gubbins::TestSpace<dim>  &test,
+      Problem (qdove::TrialSpace<dim> &trial,
+               qdove::TestSpace<dim>  &test,
                unsigned int eigenpairs = 1);
 
       /**
@@ -96,12 +96,12 @@ namespace gubbins
       /**
          Pointer to trial space.
       */
-      gubbins::TrialSpace<dim> *trial_space;
+      qdove::TrialSpace<dim> *trial_space;
 
       /**
          Pointer to test space.
       */
-      gubbins::TestSpace<dim>  *test_space;
+      qdove::TestSpace<dim>  *test_space;
 
       /**
 	 System matrix (or hamiltonian matrix) to the eigenspectrum
@@ -142,6 +142,6 @@ namespace gubbins
 
   } // namespace Schroedinger
 
-} // namespace gubbins
+} // namespace qdove
 
-#endif // __gubbins_schroedinger_h
+#endif // __qdove_schroedinger_h

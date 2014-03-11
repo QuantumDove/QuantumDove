@@ -28,7 +28,7 @@
 #include <deal.II/base/quadrature_lib.h>
 #include <deal.II/fe/fe_values.h>
 
-namespace gubbins
+namespace qdove
 {
 
   namespace Schroedinger
@@ -42,8 +42,8 @@ namespace gubbins
     {}
 
     template <int dim>
-    Problem<dim>::Problem (gubbins::TrialSpace<dim> &trial,
-                           gubbins::TestSpace<dim>  &test,
+    Problem<dim>::Problem (qdove::TrialSpace<dim> &trial,
+                           qdove::TestSpace<dim>  &test,
                            unsigned int eigenpairs)
       :
       trial_space (&trial),
@@ -232,6 +232,6 @@ namespace gubbins
     
   } // namespace Schroedinger
 
-} // namespace gubbins
+} // namespace qdove
 
 #include "schroedinger.inst"

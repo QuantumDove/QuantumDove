@@ -24,7 +24,7 @@
 
 #include <qdove/psuedopotentials/function_library.h>
 
-namespace gubbins
+namespace qdove
 {
   template<int dim>
   double
@@ -50,7 +50,7 @@ namespace gubbins
   }
 }
 
-namespace gubbins
+namespace qdove
 {
   template<int dim>
   double
@@ -71,7 +71,7 @@ namespace gubbins
             dealii::ExcDimensionMismatch(values.size(), points.size()));
     
     for (unsigned int i=0; i<points.size(); ++i)
-      values[i] = gubbins::AnisotropicOscillator<dim>::value (points[i], component);
+      values[i] = qdove::AnisotropicOscillator<dim>::value (points[i], component);
   }
 }
 

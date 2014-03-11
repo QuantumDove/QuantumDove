@@ -1,2 +1,2 @@
-template class gubbins::Fick::Problem<1>;
-template class gubbins::Fick::Solution<1>;
+template class qdove::Fick::Problem<1>;
+template class qdove::Fick::Solution<1>;

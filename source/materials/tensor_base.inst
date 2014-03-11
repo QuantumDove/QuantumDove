@@ -1,2 +1,2 @@
-template class gubbins::TensorBase<6>;
-template class gubbins::TensorBase<2>;
+template class qdove::TensorBase<6>;
+template class qdove::TensorBase<2>;

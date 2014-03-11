@@ -22,8 +22,8 @@
    DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef __gubbins_generic_eigenspectrum_solver_h
-#define __gubbins_generic_eigenspectrum_solver_h
+#ifndef __qdove_generic_eigenspectrum_solver_h
+#define __qdove_generic_eigenspectrum_solver_h
 
 #include <qdove/generic_linear_algebra/eigenspectrum_system.h>
 
@@ -31,7 +31,7 @@
 #include <deal.II/lac/slepc_solver.h>
 #include <deal.II/lac/slepc_spectral_transformation.h>
 
-namespace gubbins
+namespace qdove
 {
   class EigenspectrumSolver
   {
@@ -56,4 +56,4 @@ namespace gubbins
   };
 }
 
-#endif // __gubbins_generic_eigenspectrum_solver_h
+#endif // __qdove_generic_eigenspectrum_solver_h

@@ -22,8 +22,8 @@
    DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef __gubbins_test_space_h
-#define __gubbins_test_space_h
+#ifndef __qdove_test_space_h
+#define __qdove_test_space_h
 
 #include <qdove/base/trial_space.h>
 
@@ -31,7 +31,7 @@
 #include <deal.II/fe/fe_system.h>
 #include <deal.II/fe/fe_q.h>
 
-namespace gubbins
+namespace qdove
 {
   /**
      Implementation of a finite element test space.
@@ -48,7 +48,7 @@ namespace gubbins
       /**
 	 Constructor 
       */
-      TestSpace (gubbins::TrialSpace<dim> &trial_space);
+      TestSpace (qdove::TrialSpace<dim> &trial_space);
 
       /**
 	 Destructor 
@@ -88,7 +88,7 @@ namespace gubbins
       /**
 	 The trial space associated with this test space.
       */
-      gubbins::TrialSpace<dim> trial_space; 
+      qdove::TrialSpace<dim> trial_space; 
       
       /**
 	 Handler of degrees of freedom. 
@@ -102,4 +102,4 @@ namespace gubbins
     };
 }
 
-#endif // __gubbins_test_space_h
+#endif // __qdove_test_space_h

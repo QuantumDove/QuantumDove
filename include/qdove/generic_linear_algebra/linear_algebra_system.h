@@ -22,8 +22,8 @@
    DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef __gubbins_linear_algebra_system_h
-#define __gubbins_linear_algebra_system_h
+#ifndef __qdove_linear_algebra_system_h
+#define __qdove_linear_algebra_system_h
 
 /* Types of linear algebra system */
 #include <qdove/generic_linear_algebra/system_type.h>
@@ -35,7 +35,7 @@
 #include <deal.II/lac/petsc_sparse_matrix.h>
 #include <deal.II/lac/petsc_vector.h>
 
-namespace gubbins
+namespace qdove
 {
   /**
    * A class denoting the objects that make up a 
@@ -79,7 +79,7 @@ namespace gubbins
     /**
        Set the system type 
     */
-    void set_system_type (gubbins::SystemType &linear_algebra_system_type);
+    void set_system_type (qdove::SystemType &linear_algebra_system_type);
 
     /**
        Reinitialise matrices and vectors of the linear algebra
@@ -103,5 +103,5 @@ namespace gubbins
   
 }
 
-#endif // __gubbins_linear_algebra_system_h
+#endif // __qdove_linear_algebra_system_h
 

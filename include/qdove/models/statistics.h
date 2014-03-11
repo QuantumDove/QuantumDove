@@ -22,12 +22,12 @@
    DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef __gubbins_statistics_h
-#define __gubbins_statistics_h
+#ifndef __qdove_statistics_h
+#define __qdove_statistics_h
 
 #include <deal.II/lac/petsc_vector.h>
 
-namespace gubbins
+namespace qdove
 {
 
   /**
@@ -91,6 +91,6 @@ namespace gubbins
     
   } // namespace BoseEinstein
 
-} // namespace gubbins
+} // namespace qdove
 
-#endif // __gubbins_statistics_h
+#endif // __qdove_statistics_h

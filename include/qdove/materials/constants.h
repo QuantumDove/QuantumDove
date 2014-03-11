@@ -22,8 +22,8 @@
    DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef __gubbins_constants_h
-#define __gubbins_constants_h
+#ifndef __qdove_constants_h
+#define __qdove_constants_h
 
 
 /** 
@@ -31,7 +31,7 @@
     book, "Quantum Wells, Wires and Dots".
 */
 
-namespace gubbins
+namespace qdove
 {
   // Universal
 
@@ -79,6 +79,6 @@ namespace gubbins
   const double mstar_GaAs        =  0.067;
   const double permittivity_GaAs = 12.9 * EPSILON;
 
-} // namespace gubbins
+} // namespace qdove
 
-#endif // __gubbins_constants_h
+#endif // __qdove_constants_h

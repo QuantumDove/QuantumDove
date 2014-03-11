@@ -22,10 +22,10 @@
    DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef __gubbins_material_symmetry_h
-#define __gubbins_material_symmetry_h
+#ifndef __qdove_material_symmetry_h
+#define __qdove_material_symmetry_h
 
-namespace gubbins
+namespace qdove
 {
   /* TODO: Investigate how a union can constructed to access
      combinations of flags using group number. */
@@ -75,6 +75,6 @@ namespace gubbins
       
       return symmetry_flag;
     }
-} // gubbins
+} // qdove
 
-#endif // __gubbins_material_symmetry_h
+#endif // __qdove_material_symmetry_h

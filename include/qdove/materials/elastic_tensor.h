@@ -24,10 +24,10 @@
 
 #include <qdove/materials/tensor_base.h>
 
-#ifndef __gubbins_elastic_tensor_h
-#define __gubbins_elastic_tensor_h
+#ifndef __qdove_elastic_tensor_h
+#define __qdove_elastic_tensor_h
 
-namespace gubbins
+namespace qdove
 {  
   /**
      The elastic tensor of moduli.  
@@ -43,7 +43,7 @@ namespace gubbins
     */
     ElasticTensor (const std::initializer_list<double> &moduli) 
       :  
-    gubbins::TensorBase<4> (moduli) 
+    qdove::TensorBase<4> (moduli) 
       {}
     
     /**
@@ -61,7 +61,7 @@ namespace gubbins
        Access operator to the underlying tensor field base.
     */
     inline  
-      gubbins::TensorBase<4> operator* () const  
+      qdove::TensorBase<4> operator* () const  
     {  
       return (*this);
     }
@@ -88,6 +88,6 @@ namespace gubbins
     
   }; /* ElasticTensor */
   
-} /* namespace gubbins */
+} /* namespace qdove */
 
-#endif /* __gubbins_elastic_tensor_h */
+#endif /* __qdove_elastic_tensor_h */

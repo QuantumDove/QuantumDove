@@ -22,8 +22,8 @@
    DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef __gubbins_poisson_h
-#define __gubbins_poisson_h
+#ifndef __qdove_poisson_h
+#define __qdove_poisson_h
 
 #include <qdove/base/trial_space.h>
 #include <qdove/base/test_space.h>
@@ -36,7 +36,7 @@
 #include <deal.II/lac/petsc_solver.h>
 #include <deal.II/lac/petsc_precondition.h>
 
-namespace gubbins
+namespace qdove
 {
   
   namespace Poisson
@@ -61,8 +61,8 @@ namespace gubbins
 	   Constructor. Generate the problem using these trial and
 	   test spaces.
 	*/
-	Problem (gubbins::TrialSpace<dim> &trial,
-		 gubbins::TestSpace<dim>  &test);
+	Problem (qdove::TrialSpace<dim> &trial,
+		 qdove::TestSpace<dim>  &test);
 	
 	/**
 	   Destructor 
@@ -94,12 +94,12 @@ namespace gubbins
 	/**
 	   Pointer to trial space.
 	*/
-	gubbins::TrialSpace<dim> *trial_space;
+	qdove::TrialSpace<dim> *trial_space;
 
 	/**
 	   Pointer to test space. 
 	*/
-	gubbins::TestSpace<dim>  *test_space;
+	qdove::TestSpace<dim>  *test_space;
 	
 	/**
 	   Flag indicating if the problem has been initialised. 
@@ -130,6 +130,6 @@ namespace gubbins
     
   } // namespace Poisson
   
-} // namespace gubbins
+} // namespace qdove
 
 #endif // poisson_h

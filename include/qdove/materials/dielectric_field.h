@@ -22,12 +22,12 @@
    DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef __gubbins_dielectric_tensor_h
-#define __gubbins_dielectric_tensor_h
+#ifndef __qdove_dielectric_tensor_h
+#define __qdove_dielectric_tensor_h
 
 #include <qdove/materials/tensor_base.h>
 
-namespace gubbins
+namespace qdove
 {
   
   /**
@@ -35,12 +35,12 @@ namespace gubbins
   */
   class DielectricTensor
     : 
-    gubbins::TensorBase<2>
+    qdove::TensorBase<2>
   {
     
     DielectricTensor (const std::initializer_list<double> &moduli) 
       :  
-    gubbins::TensorBase<2> (moduli) 
+    qdove::TensorBase<2> (moduli) 
       {}
     
     /**
@@ -58,7 +58,7 @@ namespace gubbins
        Access operator to the underlying tensor field base.
     */
     inline  
-      gubbins::TensorBase<2> operator* () const  
+      qdove::TensorBase<2> operator* () const  
     {  
       return (*this);
     }
@@ -85,8 +85,8 @@ namespace gubbins
     
   }; /* DielectricField */
 
-} /* namespace gubbins */
+} /* namespace qdove */
 
-#endif /* __gubbins_dielectric_tensor_h */
+#endif /* __qdove_dielectric_tensor_h */
 
 

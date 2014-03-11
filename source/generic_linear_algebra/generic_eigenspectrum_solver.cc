@@ -24,7 +24,7 @@
 
 #include <qdove/generic_linear_algebra/generic_eigenspectrum_solver.h>
 
-namespace gubbins
+namespace qdove
 {
   void solve (EigenspectrumSystem::System &eigenspectrum_system)
   {

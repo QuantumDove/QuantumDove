@@ -24,7 +24,7 @@
 
 #include <qdove/materials/dielectric_field.h>
 
-namespace gubbins
+namespace qdove
 {  
 
   void DielectricTensor::distribute ()
@@ -106,7 +106,7 @@ namespace gubbins
     (*this)[2][2] = this->constants[0];
   }    
   
-} // namespace gubbins
+} // namespace qdove
 
 
 

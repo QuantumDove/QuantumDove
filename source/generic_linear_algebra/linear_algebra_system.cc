@@ -25,7 +25,7 @@
 #include <cassert>
 #include <qdove/generic_linear_algebra/linear_algebra_system.h>
 
-namespace gubbins
+namespace qdove
 {
   /* Constructor */
   LinearAlgebraSystem::LinearAlgebraSystem () 
@@ -35,7 +35,7 @@ namespace gubbins
   {}
 
   void
-  LinearAlgebraSystem::set_system_type (gubbins::SystemType &linear_algebra_system_type)
+  LinearAlgebraSystem::set_system_type (qdove::SystemType &linear_algebra_system_type)
   {}
 
   void

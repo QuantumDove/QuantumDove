@@ -28,7 +28,7 @@
 
 #include <qdove/materials/tensor_base.h>
 
-namespace gubbins
+namespace qdove
 {  
   
   template <int rank>
@@ -61,7 +61,7 @@ namespace gubbins
     assert (false && "Virtual function called."); 
   }
   
-} // namespace gubbins
+} // namespace qdove
 
 
 #include "tensor_base.inst"

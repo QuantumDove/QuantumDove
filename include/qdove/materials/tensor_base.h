@@ -22,8 +22,8 @@
    DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef __gubbins_tensor_base_h
-#define __gubbins_tensor_base_h
+#ifndef __qdove_tensor_base_h
+#define __qdove_tensor_base_h
 
 #include <qdove/materials/material_symmetry.h>
 
@@ -33,7 +33,7 @@
 #include <map>
 #include <array>
 
-namespace gubbins
+namespace qdove
 {
   /**
      Base class for crystal tensors of empirical moduli. 
@@ -128,7 +128,7 @@ namespace gubbins
     
   }; /* TensorBase */
   
-} /* namespace gubbins */
+} /* namespace qdove */
 
-#endif /* __gubbins_tensor_base_h */
+#endif /* __qdove_tensor_base_h */
 

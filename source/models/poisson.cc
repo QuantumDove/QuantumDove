@@ -28,7 +28,7 @@
 #include <deal.II/base/quadrature_lib.h>
 #include <deal.II/fe/fe_values.h>
 
-namespace gubbins
+namespace qdove
 {
 
   namespace Poisson
@@ -41,8 +41,8 @@ namespace gubbins
     {}
     
     template <int dim>
-    Problem<dim>::Problem (gubbins::TrialSpace<dim> &trial,
-			   gubbins::TestSpace<dim>  &test)
+    Problem<dim>::Problem (qdove::TrialSpace<dim> &trial,
+			   qdove::TestSpace<dim>  &test)
       :
       trial_space (&trial),
       test_space (&test),
@@ -190,6 +190,6 @@ namespace gubbins
     
   } // namespace Poisson
 
-} // namespace gubbins
+} // namespace qdove
 
 #include "poisson.inst"
