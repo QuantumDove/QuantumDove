@@ -22,34 +22,31 @@
    DEALINGS IN THE SOFTWARE.
 */
 
-#include <gubbins/materials/tensor_base.h>
+#ifndef __gubbins_dielectric_tensor_h
+#define __gubbins_dielectric_tensor_h
 
-#ifndef __gubbins_elastic_tensor_h
-#define __gubbins_elastic_tensor_h
+#include <qdove/materials/tensor_base.h>
 
 namespace gubbins
-{  
+{
+  
   /**
-     The elastic tensor of moduli.  
+     The dielectric tensor of moduli.  
   */
-  class ElasticTensor
-    :  
-    public TensorBase<4> 
+  class DielectricTensor
+    : 
+    gubbins::TensorBase<2>
   {
-  public:
     
-    /**
-       Constructor.  
-    */
-    ElasticTensor (const std::initializer_list<double> &moduli) 
+    DielectricTensor (const std::initializer_list<double> &moduli) 
       :  
-    gubbins::TensorBase<4> (moduli) 
+    gubbins::TensorBase<2> (moduli) 
       {}
     
     /**
        Virtual destructor.  
     */
-    virtual ~ElasticTensor ();
+    virtual ~DielectricTensor ();
     
     /**
        Distribute moduli onto this tensor field according to rules
@@ -61,33 +58,35 @@ namespace gubbins
        Access operator to the underlying tensor field base.
     */
     inline  
-      gubbins::TensorBase<4> operator* () const  
+      gubbins::TensorBase<2> operator* () const  
     {  
       return (*this);
     }
     
   private:
-    
+
     /**
-       Distribute elastic moduli onto this tensor according to the
-       rules governed by the hexagonal symmetry group.
+       Distribute dielectric moduli onto this tensor according to the
+       rules governed by the hexagonal symmetry group. 
     */ 
     void distribute_to_hexagonal ();
+
+    /**
+       Distribute dielectric moduli onto this tensor according to the
+       rules governed by the trigonal symmetry group.
+    */
+    void distribute_to_trigonal ();
     
     /**
-       Distribute elastic moduli onto this tensor according to the
+       Distribute dielectric moduli onto this tensor according to the
        rules governed by the cubic symmetry group.
     */
     void distribute_to_cubic ();
     
-    /**
-       Distribute elastic moduli onto this tensor according to the
-       rules governed by the trigonal symmetry group. 
-    */
-    void distribute_to_trigonal ();
-    
-  }; /* ElasticTensor */
-  
+  }; /* DielectricField */
+
 } /* namespace gubbins */
 
-#endif /* __gubbins_elastic_tensor_h */
+#endif /* __gubbins_dielectric_tensor_h */
+
+

@@ -13,7 +13,7 @@ add_subdirectory (models)
 add_subdirectory (psuedopotentials)
 
 ## Wrap objects into a single library
-add_library (${GUBBINS_BASE_NAME} SHARED ## NB: this "SHARED" should not really be here!
+add_library (${QDOVE_BASE_NAME} SHARED ## NB: this "SHARED" should not really be here!
   $<TARGET_OBJECTS:base>
   $<TARGET_OBJECTS:generic_linear_algebra>
   $<TARGET_OBJECTS:materials>
@@ -22,7 +22,7 @@ add_library (${GUBBINS_BASE_NAME} SHARED ## NB: this "SHARED" should not really 
 )
 
 ## Set library properties
-set_target_properties (${GUBBINS_BASE_NAME} PROPERTIES SOVERSION ${GUBBINS_VERSION})
+set_target_properties (${QDOVE_BASE_NAME} PROPERTIES SOVERSION ${QDOVE_VERSION})
 
 ## Link (with external) libraries
-# target_link_libraries (${GUBBINS_BASE_NAME} ${GUBBINS_EXTERNAL_LIBRARIES})
+# target_link_libraries (${QDOVE_BASE_NAME} ${QDOVE_EXTERNAL_LIBRARIES})

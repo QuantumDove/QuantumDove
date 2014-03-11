@@ -1,5 +1,5 @@
 /* 
-   Copyright (C) 2013 the gubbins authors
+   Copyright (C) 2013 the QDove authors
    
    Permission is hereby granted, free of charge, to any person
    obtaining a copy of this software and associated documentation
@@ -26,7 +26,7 @@
 #include <cstdlib>
 #include <iostream>
 
-#include <gubbins/materials/tensor_base.h>
+#include <qdove/materials/tensor_base.h>
 
 namespace gubbins
 {  

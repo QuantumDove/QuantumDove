@@ -11,3 +11,10 @@
 *.lai
 *.la
 *.a
+
+doc/html
+doc/latex
+examples/*/CMake*
+examples/*/Makefile
+examples/*/*.o
+examples/*/*.gpl

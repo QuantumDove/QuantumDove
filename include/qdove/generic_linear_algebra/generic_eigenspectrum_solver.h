@@ -25,7 +25,7 @@
 #ifndef __gubbins_generic_eigenspectrum_solver_h
 #define __gubbins_generic_eigenspectrum_solver_h
 
-#include <gubbins/generic_linear_algebra/eigenspectrum_system.h>
+#include <qdove/generic_linear_algebra/eigenspectrum_system.h>
 
 #include <deal.II/lac/solver_control.h>
 #include <deal.II/lac/slepc_solver.h>

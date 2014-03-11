@@ -25,7 +25,7 @@
 #ifndef __gubbins_tensor_base_h
 #define __gubbins_tensor_base_h
 
-#include <gubbins/materials/material_symmetry.h>
+#include <qdove/materials/material_symmetry.h>
 
 #include <deal.II/base/tensor.h>
 

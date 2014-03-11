@@ -1,14 +1,14 @@
 ## -------------------------------------------------------------------
-## Copyright 2013 gubbins.
+## Copyright 2013 qdove.
 ##
 ## Author: Toby D. Young
 ## -------------------------------------------------------------------
 
 cmake_minimum_required (VERSION 2.8)
 
-# gubbins
-set (GUBBINS_VERSION 0.3.0)
-set (GUBBINS_BASE_NAME qdove)
+# qdove
+set (QDOVE_VERSION 0.3.0)
+set (QDOVE_BASE_NAME qdove)
 set (CMAKE_BUILD_TYPE Debug)
 
 include (CheckFunctionExists)
@@ -25,9 +25,9 @@ include (FindPackageHandleStandardArgs)
 ## doxygen and friends
 find_package (Doxygen)
 if (DOXYGEN_FOUND)
-  configure_file (${CMAKE_CURRENT_SOURCE_DIR}/doc/gubbins.in ${CMAKE_CURRENT_SOURCE_DIR}/doc/gubbins.dox @ONLY)
+  configure_file (${CMAKE_CURRENT_SOURCE_DIR}/doc/qdove.in ${CMAKE_CURRENT_SOURCE_DIR}/doc/qdove.dox @ONLY)
   add_custom_target(doc
-    ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/doc/gubbins.dox
+    ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/doc/qdove.dox
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/doc
     COMMENT "Generating API documentation with doxygen" VERBATIM
     )
@@ -42,10 +42,10 @@ include_directories (${DEAL_II_INCLUDE_DIRS})
 
 set (CMAKE_INCLUDE_CURRENT_DIR true)
 set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
-set (GUBBINS_WITH_LIBRARIES ${GUBBINS_WITH_LIBRARIES} ${DEAL_II_LIBRARIES})
+set (QDOVE_WITH_LIBRARIES ${QDOVE_WITH_LIBRARIES} ${DEAL_II_LIBRARIES})
 
 # start project
-project (GUBBINS)
+project (QDOVE)
 
 enable_language (C)
 enable_language (CXX)
@@ -55,12 +55,4 @@ add_subdirectory (source)
 
 # Appendix
 
-#if (CXX_COMPILER_FLAG_RDYNAMIC)
-#  add_definitions ("-rdynamic")
-#endif ()
-
-#foreach (library ${GUBBINS_WITH_LIBRARIES})
-#  target_link_libraries (${GUBBINS_BASE_NAME} ${library}) 
-#  message (STATUS "Added library ${library}")
-#endforeach ()
 

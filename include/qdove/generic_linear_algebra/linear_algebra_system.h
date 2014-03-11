@@ -22,11 +22,14 @@
    DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef __gubbins_eigenspectrum_system_h
-#define __gubbins_eigenspectrum_system_h
+#ifndef __gubbins_linear_algebra_system_h
+#define __gubbins_linear_algebra_system_h
 
-/* Types of eigenspectrum system */
-#include <gubbins/generic_linear_algebra/system_type.h>
+/* Types of linear algebra system */
+#include <qdove/generic_linear_algebra/system_type.h>
+
+/* Types of test space */
+#include <qdove/base/test_space.h>
 
 /* Objects needed for a sparse-matrix eigenspectrum system */
 #include <deal.II/lac/petsc_sparse_matrix.h>
@@ -35,72 +38,59 @@
 namespace gubbins
 {
   /**
-   * A class denoting the objects that make up a generalised
-   * eigenspectrum system \[(A-B\lambda)x=0\]
+   * A class denoting the objects that make up a 
+   * linear algebra system \[Ax=b\]
    */
-  class EigenspectrumSystem
+  class LinearAlgebraSystem
   {
   public:
 
     /**
        Constructor 
     */
-    EigenspectrumSystem ();
+    LinearAlgebraSystem ();
 
     /**
        Destructor 
     */
-    ~EigenspectrumSystem () {};
+    ~LinearAlgebraSystem () {};
     
     /**
-       Objects that make up a generalised eigenspectrum problem.
+       Objects that make up a generalised eigenspectrum problem. 
     */
     struct System
     {
-      System() : n_eigenpairs(1) {}
-
       /**
 	 System matrix  
-       */
-      dealii::PETScWrappers::SparseMatrix        A;
+      */
+      dealii::PETScWrappers::SparseMatrix A;
 
       /**
-	 Mass matrix (also called the overlap matrix in some of the
-	 literature).
+	 System (right-hand-side) vector 
       */
-      dealii::PETScWrappers::SparseMatrix        B;
+      dealii::PETScWrappers::Vector       b;
 
       /**
-	 Eigenfunctions 
+	 Solution vector 
       */
-      std::vector<dealii::PETScWrappers::Vector> x;
-
-      /**
-	 Eigenvalues 
-      */
-      std::vector<double>                        lambda;
-
-      /**
-	 Number of eigenpairs - deafults to 1 
-      */
-      unsigned int                               n_eigenpairs;
+      dealii::PETScWrappers::Vector       x;
     };
 
     /**
-	Set the system type 
+       Set the system type 
     */
-    void set_system_type (gubbins::SystemType &eigenspectrum_system_type);
+    void set_system_type (gubbins::SystemType &linear_algebra_system_type);
 
     /**
-       Reinitialise matrices, vectors, and values of the eigenspectrum
-       system
+       Reinitialise matrices and vectors of the linear algebra
+       system 
     */
     void reinit ();
     
   private:
 
     /**
-       Internal reference to a generalised eigenspectrum system
+       Internal reference to a generalised eigenspectrum system 
     */
     System system;
     
@@ -113,5 +103,5 @@ namespace gubbins
   
 }
 
-#endif // __gubbins_eigenspectrum_system_h
+#endif // __gubbins_linear_algebra_system_h
 

@@ -25,8 +25,8 @@
 #ifndef __gubbins_fick_h
 #define __gubbins_fick_h
 
-#include <gubbins/base/trial_space.h>
-#include <gubbins/base/test_space.h>
+#include <qdove/base/trial_space.h>
+#include <qdove/base/test_space.h>
 
 #include <deal.II/base/function.h>
 #include <deal.II/numerics/vector_tools.h>

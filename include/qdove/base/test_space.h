@@ -25,7 +25,7 @@
 #ifndef __gubbins_test_space_h
 #define __gubbins_test_space_h
 
-#include <gubbins/base/trial_space.h>
+#include <qdove/base/trial_space.h>
 
 #include <deal.II/dofs/dof_handler.h>
 #include <deal.II/fe/fe_system.h>

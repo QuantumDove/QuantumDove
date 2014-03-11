@@ -26,7 +26,7 @@
 #define __gubbins_generic_linear_algebra_solver_h
 
 // Clearly this needed to know what a linear system is.
-#include <gubbins/generic_linear_algebra/linear_algebra_system.h>
+#include <qdove/generic_linear_algebra/linear_algebra_system.h>
 
 // For inital tests a simple preconditioner and cg solver may be
 // used....

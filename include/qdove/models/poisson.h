@@ -25,8 +25,8 @@
 #ifndef __gubbins_poisson_h
 #define __gubbins_poisson_h
 
-#include <gubbins/base/trial_space.h>
-#include <gubbins/base/test_space.h>
+#include <qdove/base/trial_space.h>
+#include <qdove/base/test_space.h>
 
 #include <deal.II/lac/constraint_matrix.h>
 #include <deal.II/lac/petsc_vector.h>
