@@ -7,7 +7,7 @@
 cmake_minimum_required (VERSION 2.8)
 
 # qdove
-set (QDOVE_VERSION 0.3.0)
+set (QDOVE_VERSION 0.3.1)
 set (QDOVE_BASE_NAME qdove)
 set (CMAKE_BUILD_TYPE Debug)
 
