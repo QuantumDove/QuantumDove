@@ -25,7 +25,7 @@ include (FindPackageHandleStandardArgs)
 ## doxygen and friends
 find_package (Doxygen)
 if (DOXYGEN_FOUND)
-  configure_file (${CMAKE_CURRENT_SOURCE_DIR}/doc/qdove.in ${CMAKE_CURRENT_SOURCE_DIR}/doc/qdove.dox @ONLY)
+  configure_file (${CMAKE_CURRENT_SOURCE_DIR}/doc/qdove.dox.in ${CMAKE_CURRENT_SOURCE_DIR}/doc/qdove.dox @ONLY)
   add_custom_target(doc
     ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/doc/qdove.dox
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/doc
