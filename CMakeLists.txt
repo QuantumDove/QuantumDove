@@ -37,6 +37,19 @@ endif (DOXYGEN_FOUND)
 find_package (deal.II 8.0 REQUIRED
   HINTS ${DEAL_II_DIR} ../ ../../ $ENV{DEAL_II_DIR}
   )
+
+
+# Are all deal.II dependencies fullfilled?
+IF(NOT DEAL_II_WITH_PETSC OR NOT DEAL_II_WITH_SLEPC)
+  MESSAGE(FATAL_ERROR "
+Error! The deal.II library found at ${DEAL_II_PATH} was not configured with
+    DEAL_II_WITH_PETSC = ON
+    DEAL_II_WITH_SLEPC = ON
+One or all of these are OFF in your installation but are required for this tutorial step."
+    )
+ENDIF()
+
+
 DEAL_II_INITIALIZE_CACHED_VARIABLES ()
 include_directories (${DEAL_II_INCLUDE_DIRS})
 
