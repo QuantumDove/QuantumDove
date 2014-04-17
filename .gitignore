@@ -12,9 +12,18 @@
 *.la
 *.a
 
+# User generated files
 doc/html
 doc/latex
 examples/*/CMake*
 examples/*/Makefile
 examples/*/*.o
 examples/*/*.gpl
+
+# Project generated files
+CMake*
+cmake_install.cmake
+Makefile
+source/*/Makefile
+source/*/cmake_install.cmake
+lib
